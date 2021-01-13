@@ -1,0 +1,51 @@
+@import 'themeVariables';
+
+.bg-green{
+    background-color: $primary-color;
+    color: $neutral-color;
+}
+
+.flex-end{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+
+.table   {
+    border-collapse: collapse;
+    font-size: 0.9em;
+    width: 100%;
+    margin-top: 50px;
+
+    thead tr {
+        background-color: transparent;
+        color: $terciary-color;
+        font-weight: 500;
+        border-bottom: 1px solid darken($secondary-color, 5%);
+    }
+
+    th,td{
+        padding: 8px 0;
+        text-align: left;
+        margin-right: 10px;
+
+        &.right{
+            text-align: right;
+        }
+
+        &.center{
+            text-align: center;
+        }
+    }
+
+    tbody tr {
+        border-bottom: 1px solid darken($secondary-color, 5%);
+
+        &:hover{
+            background-color: lighten($secondary-color, 25%);
+            cursor: pointer;
+        }
+    }
+    
+}

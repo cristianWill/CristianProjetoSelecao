@@ -1,0 +1,32 @@
+@import 'themeVariables';
+
+.input{
+    width: 100%;
+    display: block;
+    color: $primary-color;
+}
+
+/* input color class */
+::ng-deep .mat-form-field-label {
+    color: $primary-color !important;
+}
+
+::ng-deep .mat-form-field-underline {
+    background-color: $primary-color !important;
+}
+
+
+/* Change label color on focused */
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+    color: $primary-color !important;
+    transform: translateY(-1.28125em) scale(0.9) perspective(100px) translateZ(0.00106px) !important;
+}
+
+/* underline border color on focused */
+::ng-deep .mat-focused .mat-form-field-underline .mat-form-field-ripple{
+    background-color: $primary-color !important;
+}
+
+::ng-deep .mat-error{
+    color: $danger-color;
+}

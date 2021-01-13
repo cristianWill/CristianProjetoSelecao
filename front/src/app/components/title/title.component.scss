@@ -1,0 +1,18 @@
+@import 'themeVariables';
+
+.title{
+    font-size: 1.3rem;
+    width: 100%;
+    display: block;
+    font-weight: 500;
+    opacity: .5;
+
+    &::after{
+        content: '';
+        display: block;
+        height: 2px;
+        background-color: $primary-color;
+        margin-top: 10px;
+        opacity: .7;
+    }
+}

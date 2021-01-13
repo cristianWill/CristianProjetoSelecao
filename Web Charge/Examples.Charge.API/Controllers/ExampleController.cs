@@ -4,6 +4,7 @@ using Examples.Charge.Application.Interfaces;
 using Examples.Charge.Application.Messages.Request;
 using Examples.Charge.Application.Messages.Response;
 using System.Threading.Tasks;
+using Examples.Charge.Infra.Data.Context;
 
 namespace Examples.Charge.API.Controllers
 {

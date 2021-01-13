@@ -1,0 +1,22 @@
+<mat-form-field class="input">
+    <mat-label> {{label}} </mat-label>
+    <input  matInput
+            [type]="type"   
+            [errorStateMatcher]="matcher"
+            [formControl]="$any(formCtrl)" 
+            [mask]="mask"
+            [readOnly]="readonly"
+            >
+    <mat-error *ngIf="formCtrl.hasError('required')">
+        Campo obrigatório!
+    </mat-error>
+    <mat-error *ngIf="formCtrl.hasError('email')">
+        Formato diferente de e-mail
+    </mat-error>
+    <mat-error *ngIf="formCtrl.hasError('nomeExistente')">
+        Nome já está em uso!
+    </mat-error>
+    <mat-error *ngIf="formCtrl.hasError('mask')">
+        Formato inválido!
+    </mat-error>
+</mat-form-field>

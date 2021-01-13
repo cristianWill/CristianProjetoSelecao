@@ -16,6 +16,9 @@ namespace Examples.Charge.API
 {
     public class Startup
     {
+
+        readonly string defaultPolicy = "_myAllowSpecificOrigins";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -25,12 +28,27 @@ namespace Examples.Charge.API
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy(defaultPolicy,
+                builder =>
+                {
+                    builder.AllowAnyHeader()
+                        .AllowAnyMethod()
+                        .AllowAnyOrigin();
+                });
+
+            });
+
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
             services.AddDbContext<ExampleContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("Examples.Charge.Infra.Data.Configuration"));
             });
+
             NativeInjector.Setup(services);
             services.AddAutoMapper();
 
@@ -66,6 +84,8 @@ namespace Examples.Charge.API
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseCors(defaultPolicy);
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -78,7 +98,6 @@ namespace Examples.Charge.API
                 options.SwaggerEndpoint("../swagger/v1/swagger.json", "Example Api");
                 options.DisplayRequestDuration();
             });
-
 
             app.UseMvc();
         }

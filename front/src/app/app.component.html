@@ -1,0 +1,72 @@
+<div class="w-100 d-block text-light p-4 bg-green">
+    Front Seleção Stefanini
+</div>
+
+<div class="p-4 bg-color">
+  
+  <app-title>
+    Dados Pessoa
+  </app-title>
+
+  <div class="row mt-4 mb-5">
+    <div class="col-6">
+      <app-input [label]="'Nome'" [formCtrl]="nameCtrl" ></app-input>
+    </div>
+  </div>
+
+  <app-title class="mt-5">
+    Telefones
+  </app-title>
+
+  <div class="row mt-4">
+      <app-input class="col-6" [label]="'Celular'" [mask]="'(00) 00000-0000'" [formCtrl]="celularCtrl" ></app-input>
+      <app-input class="col-4" [label]="'Tipo Celular'" [formCtrl]="tipoCelular" ></app-input>
+      <app-button class="col-2" (click)="addPhone()"> Adicionar </app-button>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <table class="table">
+        <thead>
+          <tr>
+            <th> Celular </th>
+            <th> Tipo </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let ph of personEdit.phones">
+            <td>{{ ph.phoneNumber }}</td>
+            <td>{{ ph.phoneNumberType.name }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col flex-end">
+      <app-button (click)="addPessoa()"> Salvar </app-button>
+    </div>
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th> Id </th>
+        <th> Nome </th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of values">
+        <td> {{ item.businessEntityID }} </td>
+        <td> {{ item.name }} </td>
+        <td > 
+        </td>
+        <td > <app-button (click)="remover(item.businessEntityID)"> Remover </app-button> </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
